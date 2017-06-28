@@ -17,8 +17,7 @@ namespace Tests
 
             IEnumerable<Entity> entityList = new List<User>();
             
-            //IRead<Entity> reader = new GenericReader<User>();
-            IRead<Entity> reader = new GenericReader<Entity>();
+            IRead<Entity> reader = new GenericReader<User>();
 
             #region other examples
             // Delegates are also covariant.
@@ -32,10 +31,9 @@ namespace Tests
         [TestMethod]
         public void TestContravariance()
         {
-            //ISave<User> saver = new GenericSaver<Entity>();
-            ISave<User> saver = new GenericSaver<User>();
+            ISave<User> saver = new GenericSaver<Entity>();
 
-            //ISave<User> userSaver = new EntitySaver();
+            ISave<User> userSaver = new EntitySaver();
 
             var user = new User();
 
