@@ -58,5 +58,21 @@ namespace Tests
             // Attempt contravariance...
             //IDictionary<User, User> subtypeDictionary = new Dictionary<Entity, Entity>();
         }
+
+        [TestMethod]
+        public void TestExceptions()
+        {
+            //IRead<Entity> reader = new EntityReader();
+            IRead<Entity> reader = new UserReader();
+
+            try
+            {
+                reader.ReadOne(0);
+            }
+            catch (EntityNotFoundException exception)
+            {
+                Assert.IsTrue(exception is EntityNotFoundException);                
+            }
+        }
     }
 }
