@@ -71,7 +71,7 @@ namespace Tests
             }
             catch (EntityNotFoundException exception)
             {
-                Assert.IsTrue(exception is EntityNotFoundException);                
+                // Protect against EntityNotFoundException.
             }
         }
     }
