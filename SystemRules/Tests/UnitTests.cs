@@ -19,13 +19,22 @@ namespace Tests
             
             IRead<Entity> reader = new GenericReader<User>();
 
+            IRead<Entity> methodReader = GetReader();
+
+            Entity e = reader.ReadOne(5);
+
             #region other examples
             // Delegates are also covariant.
-            Func<Entity> function = () => new User();
+            Func <Entity> function = () => new User();
 
             // Arrays are also covariant.
             Entity[] entities = new User[5];
             #endregion
+        }
+
+        public static IRead<Entity> GetReader()
+        {
+            return new GenericReader<User>();
         }
 
         [TestMethod]
@@ -42,7 +51,10 @@ namespace Tests
             #region contravariance delegates            
             Action<Entity> entityAction = entity => entity.Name = "123";
 
-            Action<User> userAction = entityAction;            
+            Action<User> userAction = entityAction;
+
+            userAction(user);
+
             #endregion
         }
 
