@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface IRead<out T>
+    public interface IRead<T>
         where T : Entity
     {
         T ReadOne(int id);

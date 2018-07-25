@@ -17,9 +17,10 @@ namespace Tests
 
             IEnumerable<Entity> entityList = new List<User>();
             
-            IRead<Entity> reader = new GenericReader<User>();
+            IRead<Entity> reader = new GenericReader<Entity>();
+            //IRead<Entity> reader = new GenericReader<User>();
 
-            IRead<Entity> methodReader = GetReader();
+            //IRead<Entity> methodReader = GetReader();
 
             Entity e = reader.ReadOne(5);
 
@@ -32,28 +33,27 @@ namespace Tests
             #endregion
         }
 
-        public static IRead<Entity> GetReader()
-        {
-            return new GenericReader<User>();
-        }
+        //public static IRead<Entity> GetReader()
+        //{
+        //    return new GenericReader<User>();
+        //}
 
         [TestMethod]
         public void TestContravariance()
         {
-            ISave<User> saver = new GenericSaver<Entity>();
+            ISave<Entity> saver = new GenericSaver<Entity>();
+            //ISave<User> saver = new GenericSaver<Entity>();
 
-            ISave<User> userSaver = new EntitySaver();
+            //ISave<User> userSaver = new EntitySaver();
 
-            var user = new User();
-
-            saver.Save(user);
+            //saver.Save(new User());
 
             #region contravariance delegates            
             Action<Entity> entityAction = entity => entity.Name = "123";
 
             Action<User> userAction = entityAction;
 
-            userAction(user);
+            userAction(new User());
 
             #endregion
         }

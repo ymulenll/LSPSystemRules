@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Interfaces
 {
-    public interface ISave<in T>
+    public interface ISave<T>
          where T : Entity
     {
         void Save(T entity);
